@@ -15,7 +15,8 @@ public class Main {
      * Popis funkce main
      * @param args Popis argumentu funkce
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         System.out.println("Hello world");
 
     }
