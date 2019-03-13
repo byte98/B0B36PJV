@@ -17,3 +17,6 @@
  3. [Cv 03 / Lab 03](./CV03)
  4. [Cv 04 / Lab 04](./CV04) *Ještě není hotovo / Not done yet*
 
+### Domácí úkoly / homeworks
+ 1. [HW 01](./HW01) Kalkulačka / Calculator
+
