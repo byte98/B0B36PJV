@@ -19,7 +19,7 @@ public final class ArrayUtil
         {
             for (int j = 0; j < array.length - i - 1; j++)
             {
-                if (array[j].compareTo(array[j+1]) < 0)
+                if (array[j].compareTo(array[j+1]) > 0)
                 {
                     Comparable tmp = array[j];
                     array[j] = array[j+1];

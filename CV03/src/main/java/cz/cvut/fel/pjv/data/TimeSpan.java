@@ -9,7 +9,7 @@ package cz.cvut.fel.pjv.data;
  *
  * @author Jiří Škoda <skodaji4@fel.cvut.cz>
  */
-public class TimeSpan
+public class TimeSpan implements Comparable<TimeSpan>
 {
     private int hour;
     private int minute;
@@ -171,6 +171,21 @@ public class TimeSpan
     public String toString()
     {
         return this.hour + " hours " + this.minute + " minutes " + this.second + " seconds";
+    }
+    
+    @Override
+    public int compareTo(TimeSpan other)
+    {
+        int reti = 0;
+        if (this.getTotalSeconds() < other.getTotalSeconds())
+        {
+            reti = -1;
+        }
+        else if (this.getTotalSeconds() > other.getTotalSeconds())
+        {
+            reti = 1;
+        }
+        return reti;
     }
     
     public static void main(String[] args)

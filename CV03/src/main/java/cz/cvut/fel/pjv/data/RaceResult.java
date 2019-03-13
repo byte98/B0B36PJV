@@ -6,13 +6,12 @@
 package cz.cvut.fel.pjv.data;
 
 import cz.cvut.fel.skodaj.b0b36pjv.cv03.Car;
-import java.util.ArrayList;
 
 /**
  *
  * @author Jiří Škoda <skodaji4@fel.cvut.cz>
  */
-public class RaceResult
+public class RaceResult implements Comparable<RaceResult>
 {
     private Car car;
     private TimeSpan time;
@@ -23,4 +22,20 @@ public class RaceResult
        this.time = time;
     }
     
+    public Car getCar()
+    {
+        return this.car;
+    }
+    
+    public TimeSpan getTime()
+    {
+        return this.time;
+    }
+    
+    @Override
+    public int compareTo(RaceResult other)
+    {
+        return this.time.compareTo(other.getTime());
+        
+    }
 }

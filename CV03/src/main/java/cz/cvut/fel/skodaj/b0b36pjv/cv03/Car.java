@@ -91,7 +91,10 @@ public class Car
         return this.serviceBook;
     }
     
-    
+    public int getSpeed()
+    {
+        return this.speed;
+    }
     
     
     
