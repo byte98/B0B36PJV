@@ -29,9 +29,36 @@ public class RoadBike extends Bicycle
         this.tireWidth = tires; 
     }
     
-        @Override
+    @Override
     public void printDescription()
     {
         System.out.println("Bike is in gear " + this.gear + " with a cadence of " + this.cadence + " and travelling at a speed of " + this.speed + " with tires width " + this.tireWidth + ".");
+    }
+    
+        
+    @Override
+    public void visitService(BasicService service)
+    {
+        service.accept(this);
+    }
+    
+    @Override
+    public void visitCar(Car car)
+    {
+        car.accept(this);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String reti = "";
+        reti += "<class='RoadBike'>";        
+        return reti;
+    }
+    
+    @Override
+    public void visit(BicycleVisitable bv)
+    {
+        bv.accept(this);
     }
 }

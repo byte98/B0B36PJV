@@ -15,53 +15,25 @@
  */
 package cz.cvut.fel.skodaj.b0b36pjv.cv04;
 
-
 /**
  *
  * @author Jiří Škoda <skodaji4@fel.cvut.cz>
  */
-public class Bicycle
+public class BicycleHolder
 {
-    protected int cadence; 
-    protected int speed; 
-    protected int gear;
+    private Bicycle bike;
     
-
-    
-    public Bicycle (int cadence, int speed, int gear)
+    public BicycleHolder(Bicycle b)
     {
-        this.cadence = cadence;
-        this.speed = speed;
-        this.gear = gear;
-    }
-    
-
-    
-    public void printDescription()
-    {
-        System.out.println("Bike is in gear " + this.gear + " with a cadence of " + this.cadence + " and travelling at a speed of " + this.speed + ".");
-    }
-    
-    public void visitService(BasicService service)
-    {
-        service.accept(this);
-    }
-    
-    public void visitCar(Car car)
-    {
-        car.accept(this);
+        this.bike = b;
     }
     
     @Override
     public String toString()
     {
-        String reti = "";
-        reti += "<class='Bicycle'>";        
+        String reti = "<class='BicycleHolder'>(Bicycle)bike=";
+        reti += this.bike.toString();
+        
         return reti;
-    }
-    
-    public void visit(BicycleVisitable bv)
-    {
-        bv.accept(this);
     }
 }

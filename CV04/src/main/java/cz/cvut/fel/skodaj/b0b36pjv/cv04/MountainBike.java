@@ -34,4 +34,30 @@ public class MountainBike extends Bicycle
     {
         System.out.println("Bike is in gear " + this.gear + " with a cadence of " + this.cadence + " and travelling at a speed of " + this.speed + " with suspension " + this.suspension + ".");
     }
+    
+    @Override
+    public void visitService(BasicService service)
+    {
+        service.accept(this);
+    }
+    
+    @Override
+    public void visitCar(Car car)
+    {
+        car.accept(this);
+    }
+    @Override
+    public String toString()
+    {
+        String reti = "";
+        reti += "<class='MountainBike'>";        
+        return reti;
+    }
+    
+    @Override
+    public void visit(BicycleVisitable bv)
+    {
+        bv.accept(this);
+    }
+    
 }

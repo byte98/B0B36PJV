@@ -19,21 +19,12 @@ package cz.cvut.fel.skodaj.b0b36pjv.cv04;
  *
  * @author Jiří Škoda <skodaji4@fel.cvut.cz>
  */
-public class BasicService implements BicycleVisitable
+public class MountainBikeHolder extends BicycleHolder
 {
     
-    public void accept(Bicycle b)
+    public MountainBikeHolder(MountainBike b)
     {
-        System.out.println("Fixing Bicycle");
+        super(b);
     }
     
-    public void accept(MountainBike b)
-    {
-        System.out.println("Can't fix MountainBike!");
-    }
-    
-    public void accept (RoadBike b)
-    {
-        System.out.println("Can't fix RoadBike!");
-    }
 }
