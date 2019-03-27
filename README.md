@@ -19,4 +19,6 @@
 
 ### Domácí úkoly / homeworks
  1. [HW 01](./HW01) Kalkulačka / Calculator
+ 2. [HW 02](./HW02) Výpočet statistiky číselné posloupnosti / Calculation of numerical sequence statistics
+ 3. [HW 03](./HW03) Kruhová fronta / Circular buffer
 
