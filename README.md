@@ -16,6 +16,8 @@
  2. [Cv 02 / Lab 02](./CV02)
  3. [Cv 03 / Lab 03](./CV03)
  4. [Cv 04 / Lab 04](./CV04)
+ 5. [Cv 05 / Lab 05](./CV05)
+ 6. [Cv 06 / Lab 06](./CV06)
 
 ### Domácí úkoly / homeworks
  1. [HW 01](./HW01) Kalkulačka / Calculator
