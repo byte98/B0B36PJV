@@ -13,11 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cz.cvut.fel.skodaj.b0b36pjv.cv06;
+package cz.cvut.fel.skodaj.b0b36pjv.cv06.app;
 
+import cz.cvut.fel.skodaj.b0b36pjv.cv06.gui.Window;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-
-
 
 /**
  *
@@ -25,14 +30,17 @@ import javax.swing.SwingUtilities;
  */
 public class Main
 {
-    Window window = new Window("First GUI");
-    
-    SwingUtilities.invokeLater(new Runnable(){
-       @Override
-        void run()
-       {
-           
-       }
-    });
-    
+    public static void main(String[] args)
+    {
+
+        SwingUtilities.invokeLater(new Runnable() {
+             @Override
+             public void run()
+             {
+                    Window main_window = new Window("My app");
+                    main_window.pack();
+                    main_window.setVisible(true);
+             }
+        });
+    }
 }

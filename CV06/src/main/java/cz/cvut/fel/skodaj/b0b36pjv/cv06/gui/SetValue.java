@@ -13,23 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cz.cvut.fel.skodaj.b0b36pjv.cv06;
+package cz.cvut.fel.skodaj.b0b36pjv.cv06.gui;
 
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
+import javax.swing.JTextField;
+import javax.swing.JLabel;
 /**
  *
  * @author Jiří Škoda <skodaji4@fel.cvut.cz>
  */
-public class Window extends JFrame
+public class SetValue implements ActionListener
 {
-    public Window (String title) throws HeadlessException
+    private JTextField textbox;
+    private JLabel label;
+    
+    public SetValue(JTextField textbox, JLabel label)
     {
-        super(title);
+        this.textbox = textbox;
+        this.label = label;
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        this.label.setText(this.textbox.getText());
+    }
+    
 }
