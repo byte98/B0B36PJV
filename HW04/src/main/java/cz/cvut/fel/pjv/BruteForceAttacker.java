@@ -1,5 +1,6 @@
 package cz.cvut.fel.pjv;
 
+
 public class BruteForceAttacker extends Thief {
     
     /**
@@ -12,85 +13,84 @@ public class BruteForceAttacker extends Thief {
      */
     private int size;
     
+    /**
+     * Space to save actually tried password
+     */
+    private int[] int_buffer;
+    
+    /**
+     * Space to save actually tried password as characters
+     */
+    private char[] char_buffer;
+    
+    /**
+     * Last combination of given characters
+     */
+    private int[] last;
+    
+    private boolean success;
+    
+    private int combinations;
+    private int try_c;
+    
     @Override
-    public void breakPassword(int sizeOfPassword) {
-        // write your code 
+    public void breakPassword(int sizeOfPassword)
+    {
+        
         this.characters = super.getCharacters();
         this.size = sizeOfPassword;
+        this.int_buffer = new int[this.size];
+        this.char_buffer = new char[this.size];
+        this.last = new int[this.size];
+        this.success = false;
+        this.combinations = (int)Math.ceil(Math.pow(this.characters.length, this.size));
         
-        //Get first allowed password
-        int[] first = new int[this.size];
+        //Set maximal password
         for (int i = 0; i < this.size; i++)
         {
-            first[i] = 0;
+            this.last[i] = this.char_buffer.length - 1;
         }
         
-        //Get last allowed password
-        int[] last = new int[this.size];
+        //Set first password
         for (int i = 0; i < this.size; i++)
         {
-            last[i] = this.characters.length - 1;
+            this.int_buffer[i] = 0;
         }
-        
-        this.tryPassword(first, last);
-        
-    }
-    /**
-     * Recursive function to try password
-     * @param password Password to check
-     * @param lastAllowed Last password allowed to check
-     * @return <code>TRUE</code> if password has been revealed, <code>FALSE</code> if not.
-     */
-    private boolean tryPassword(int[] password, int[] lastAllowed)
-    {
-        boolean reti = false;
-        char[] pswd = new char[this.size];
-        for (int i = 0; i < this.size; i++)
-        {
-            pswd[i] = this.characters[password[i]];
-        }
-        if (super.tryOpen(pswd) == false)
-        {
-            if (password != lastAllowed)
-            {
-                reti = this.tryPassword(this.getNextPassword(password), lastAllowed);
-            }
-        }
-        else
-        {
-            reti = true;
-        }
-        return reti;
+        //System.out.println(this.combinations);
+        this.tryPassword();
+
     }
     
     /**
-     * Function to generate next password
-     * @param password Password to generate successor of
-     * @return Next password
+     * Recursive function to try to break password
      */
-    private int[] getNextPassword(int[] password)
-    {
-        int reti[] = new int[this.size];
-        boolean overflow = false;
-        int char_len = this.characters.length;
-        for (int i = this.size - 1; i >= 0; i--)
+    private void tryPassword()
+    {   
+        //Transforms int buffer to char buffer
+        for (int i = 0; i < this.size; i++)
         {
-            int value = password[i];
-            value++;
-            if (overflow)
-            {
-                value ++;
-                overflow = false;
-            }
-            if (value >= char_len)
-            {
-                value = value % this.size;
-                overflow = true;
-            }
-            reti[i] = value;
+            this.char_buffer[i] = this.characters[this.int_buffer[i]];
         }
-        
-        return reti;
+                
+        this.success = super.tryOpen(this.char_buffer);
+        if (this.success == false)
+        {
+            //Generate next password
+            boolean overflow = false;
+            for (int i = this.size - 1;i >= 0; i--)
+            {
+                if (i == this.size - 1 || overflow)
+                {
+                    this.int_buffer[i]++;   
+                    overflow = false;
+                }
+                if (this.int_buffer[i] >= this.characters.length)
+                {
+                    this.int_buffer[i] = 0;
+                    overflow = true;
+                }
+            }
+            this.tryPassword();
+        }
     }
-    
 }
